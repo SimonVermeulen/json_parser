@@ -1,0 +1,27 @@
+{
+    "towerName": "fireTower",
+    "towerId": 0,
+    "towerMaxLvl": 5,
+    "lvlStats": [
+    {
+        "lvlId": 0,
+        "dmg": 5,
+        "fireDmg": 2.0,
+        "range": 10,
+        "desc": "a small fire tower"
+    },
+    {
+        "lvlId": 1,
+        "dmg": 7,
+        "fireDmg": 3.5,
+        "range": 12,
+        "desc": "a medium fire tower"
+    },
+    {
+        "lvlId": 2,
+        "dmg": 10,
+        "fireDmg": 5.0,
+        "range": 15,
+        "desc": "a large fire tower"
+    }]
+}
