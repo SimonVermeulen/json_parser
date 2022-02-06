@@ -11,11 +11,14 @@
 
 int main(int ac, char **av)
 {
-    char *buffer = NULL;
+    char **buffer = NULL;
 
     if (ac < 2)
         return (84);
-    buffer = get_buffer(av[1]);
-    if (buffer)
-        get_data(buffer);
+    buffer = get_line_array(av[1]);
+    for (int i = 0; buffer[i]; i++) {
+        printf("%s\n", buffer[i]);
+    }
+    //if (buffer)
+      //  get_data(buffer);
 }
