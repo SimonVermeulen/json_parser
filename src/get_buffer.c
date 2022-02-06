@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** json_parser2.0
 ** File description:
-** opens the json file given as parameter in main
+** gets the buffer
 */
 
 #include <unistd.h>
@@ -12,6 +12,7 @@
 #include "json_parser.h"
 #include "my.h"
 
+//adds a new line to the given array of strings
 static char **add_line(char *line, char **buffer)
 {
     char **new_buffer = NULL;
@@ -34,6 +35,7 @@ static char **add_line(char *line, char **buffer)
     return (new_buffer);
 }
 
+//gets the whole json_file in an array of strings
 char **get_line_array(char *path)
 {
     FILE *fd = fopen(path, "r");
@@ -43,10 +45,8 @@ char **get_line_array(char *path)
 
     while (getline(&line, &size, fd) != (ssize_t) -1) {
         buffer = add_line(line, buffer);
-        if (!buffer) {
-            write(2, "Malloc error\n", 14);
+        if (!buffer)
             return (NULL);
-        }
     }
     free(line);
     fclose(fd);

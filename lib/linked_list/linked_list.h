@@ -13,6 +13,7 @@
 typedef struct node_s {
     struct node_s *prev;
     struct node_s *next;
+    int type;
     char *key;
     void *value;
     int id;

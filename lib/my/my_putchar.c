@@ -9,5 +9,5 @@
 
 void my_putchar(char c, int std)
 {
-    write(1, &c, std);
+    write(std, &c, 1);
 }

@@ -21,6 +21,7 @@ SRC	=	my_getnbr.c										\
 		my_strncmp.c									\
 		my_strncpy.c									\
 		my_strstr.c										\
+		my_compute_power_rec.c							\
 		my_convert_decimal_to_base.c					\
 		my_printf.c										\
 		my_atoi.c										\

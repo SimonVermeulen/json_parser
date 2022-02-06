@@ -16,9 +16,6 @@ int main(int ac, char **av)
     if (ac < 2)
         return (84);
     buffer = get_line_array(av[1]);
-    for (int i = 0; buffer[i]; i++) {
-        printf("%s\n", buffer[i]);
-    }
-    //if (buffer)
-      //  get_data(buffer);
+    if (buffer)
+        get_data(buffer);
 }
