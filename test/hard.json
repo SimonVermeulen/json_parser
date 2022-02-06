@@ -2,8 +2,21 @@
     "towerName": "fireTower",
     "towerId": 0,
     "towerMaxLvl": 5,
-    "lvlStats": [
-    {
+    "string": "bonjour",
+    "key_code": "b",
+    "ratio": 1.125,
+    "strings": [
+        "bonjour",
+        "salut",
+        "coucou"
+    ],
+    "numbers": [
+        2,
+        3,
+        4,
+        5
+    ],
+    "lvlStats": [{
         "lvlId": 0,
         "dmg": 5,
         "fireDmg": 2.0,
