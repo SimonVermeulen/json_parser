@@ -5,14 +5,22 @@
 ## Makefile
 ##
 
-SRC	=	src/json_parser.c	\
-		src/get_buffer.c
+SRC	=	src/json_parser.c						\
+		src/get_buffer.c						\
+		src/get_value.c							\
+		src/get_data.c							\
+		src/get_key.c							\
+		src/utils.c								\
+		src/values_getters/get_float.c			\
+		src/values_getters/get_int.c			\
+		src/values_getters/get_singlechar.c		\
+		src/values_getters/get_string.c
 
 OBJ	=	$(SRC:.c=.o)
 
 CFLAGS = -I./include -Wall -Wextra -pedantic
 
-LFLAGS =	-L./lib -lmy
+LFLAGS =	-L./lib -lmy -lm
 
 NAME	=	json_parser
 
@@ -29,7 +37,7 @@ build_lib:
 	cp ./lib/my/my.h ./include/my.h
 
 build: $(OBJ)
-	$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(LFLAGS) -g3
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LFLAGS)
 
 clean_lib:
 	$(MAKE) -C ./lib/my --silent clean
