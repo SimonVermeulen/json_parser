@@ -14,43 +14,41 @@
 
 static char **add_line(char *line, char **buffer)
 {
-    char **tmp_buffer = NULL;
+    char **new_buffer = NULL;
     static int nb_lines = 1;
     int len = 0;
 
     nb_lines++;
-    tmp_buffer = malloc(sizeof(char *) * nb_lines);
-    if (!tmp_buffer)
+    new_buffer = malloc(sizeof(char *) * nb_lines);
+    if (!new_buffer)
         return (NULL);
     if (buffer) {
-        for (; buffer[len]; len++) {
-            printf("len == %d\tbuffer[%d] == %s\n", len, len, buffer[len]);
-            tmp_buffer[len] = buffer[len];
-        }
-        tmp_buffer[len] = line;
+        for (; buffer[len]; len++)
+            new_buffer[len] = buffer[len];
+        new_buffer[len] = my_strdup(line);
         free(buffer);
     } else {
-        tmp_buffer[0] = line;
+        new_buffer[0] = my_strdup(line);
     }
-    tmp_buffer[nb_lines - 1] = NULL;
-    buffer = tmp_buffer;
-    return (buffer);
+    new_buffer[nb_lines - 1] = NULL;
+    return (new_buffer);
 }
 
 char **get_line_array(char *path)
 {
     FILE *fd = fopen(path, "r");
-    char *line = NULL;
     char **buffer = NULL;
+    char *line = NULL;
     size_t size = 0;
-    size_t llen = 0;
 
-    while ((llen = getline(&line, &size, fd)) != (size_t) -1) {
+    while (getline(&line, &size, fd) != (ssize_t) -1) {
         buffer = add_line(line, buffer);
-        printf("after attribution:\n");
-        for (int i = 0; buffer[i]; i++) {
-            printf("buffer[%d] = %s\n", i, buffer[i]);
+        if (!buffer) {
+            write(2, "Malloc error\n", 14);
+            return (NULL);
         }
     }
+    free(line);
+    fclose(fd);
     return (buffer);
 }
