@@ -24,17 +24,20 @@ $(NAME): build_lib build
 
 build_lib:
 	$(MAKE) -C ./lib/my/ --silent
+	$(MAKE) -C ./lib/linked_list --silent
 	cp ./lib/my/libmy.a ./lib/libmy.a
 	cp ./lib/my/my.h ./include/my.h
 
 build: $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LFLAGS)
+	$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(LFLAGS) -g3
 
 clean_lib:
 	$(MAKE) -C ./lib/my --silent clean
+	$(MAKE) -C ./lib/linked_list --silent clean
 
 fclean_lib:
 	$(MAKE) -C ./lib/my --silent fclean
+	$(MAKE) -C ./lib/linked_list --silent fclean
 	rm -f lib/libmy.a
 
 clean: clean_lib

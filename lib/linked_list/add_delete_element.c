@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "linked_list.h"
 
 static int check_error(list_t *list, int is_delete)

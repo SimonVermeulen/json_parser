@@ -8,6 +8,22 @@
 #ifndef LINKED_LIST_H_
     #define LINKED_LIST_H_
 
+/*---------------STRUCT---------------*/
+
+typedef struct node_s {
+    struct node_s *prev;
+    struct node_s *next;
+    char *key;
+    void *value;
+    int id;
+} node_t;
+
+typedef struct list_s {
+    node_t *head;
+    int nb_elements;
+    char *name;
+} list_t;
+
 /*----------------LIST----------------*/
 
 list_t *create_empty_list(void);
@@ -27,21 +43,5 @@ int shift_element(list_t *list);
 node_t *create_node(char *key, void *value, int id);
 
 void delete_node(node_t *node);
-
-/*---------------STRUCT---------------*/
-
-typedef struct node_s {
-    node_t *prev;
-    node_t *next;
-    char *key;
-    void *value;
-    int id;
-} node_t;
-
-typedef struct list_s {
-    node_t *head;
-    int nb_elements;
-    char *name;
-} list_t;
 
 #endif

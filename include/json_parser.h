@@ -8,20 +8,10 @@
 #ifndef JSON_PARSER_H_
     #define JSON_PARSER_H_
 
-    char *get_buffer(char *path);
+    #include "linked_list.h"
 
-typedef struct node_s {
-    node_t *prev;
-    node_t *next;
-    char *key;
-    void *value;
-    int id;
-} node_t;
+    char **get_line_array(char *path);
 
-typedef struct list_s {
-    node_t *head;
-    int nb_elements;
-    char *name;
-} list_t;
+    //list_t *get_data(const char *buffer);
 
 #endif
