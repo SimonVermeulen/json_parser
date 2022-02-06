@@ -9,40 +9,30 @@
 #include <stdlib.h>
 #include "../my.h"
 
-int handler_putchar_basic(va_list ap, char *arguments)
+int handler_putchar_basic(va_list ap, char *arguments, int std)
 {
     if (ap && (arguments == NULL || arguments[0] == '#')) {
-        my_putchar(va_arg(ap, int));
+        my_putchar(va_arg(ap, int), std);
         return (1);
     } else {
         return (0);
     }
 }
 
-int handler_putchar_percentage(va_list ap, char *arguments)
+int handler_putchar_percentage(va_list ap, char *arguments, int std)
 {
     if (ap && (arguments == NULL || arguments[0] == '#')) {
-        my_putchar('%');
+        my_putchar('%', std);
         return (1);
     } else {
         return (0);
     }
 }
 
-int handler_putstr(va_list ap, char *arguments)
+int handler_putstr(va_list ap, char *arguments, int std)
 {
     if (ap && (arguments == NULL || arguments[0] == '#')) {
-        my_putstr(va_arg(ap, char *));
-        return (1);
-    } else {
-        return (0);
-    }
-}
-
-int handler_showstr(va_list ap, char *arguments)
-{
-    if (ap && (arguments == NULL || arguments[0] == '#')) {
-        my_showstr(va_arg(ap, char *));
+        my_putstr(va_arg(ap, char *), std);
         return (1);
     } else {
         return (0);
