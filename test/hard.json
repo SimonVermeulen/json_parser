@@ -2,27 +2,14 @@
     "towerName": "fireTower",
     "towerId": 0,
     "towerMaxLvl": 5,
-    "string": "bonjour",
-    "key_code": "b",
     "ratio": 1.125,
-    "strings": [
-        "bonjour",
-        "salut",
-        "coucou"
-    ],
-    "numbers": [
-        2,
-        3,
-        4,
-        5
-    ],
     "lvlStats": [{
         "lvlId": 0,
         "dmg": 5,
         "fireDmg": 2.0,
         "range": 10,
         "desc": "a small fire tower"
-    },
+    d,
     {
         "lvlId": 1,
         "dmg": 7,
@@ -36,5 +23,10 @@
         "fireDmg": 5.0,
         "range": 15,
         "desc": "a large fire tower"
-    }]
+    }],
+    "random": {
+        "test": "rigolo",
+        "int": 1,
+        "float": 2.2
+    }
 }

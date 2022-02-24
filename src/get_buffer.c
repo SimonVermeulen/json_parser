@@ -12,43 +12,42 @@
 #include "json_parser.h"
 #include "my.h"
 
-//adds a new line to the given array of strings
-static char **add_line(char *line, char **buffer)
-{
-    char **new_buffer = NULL;
-    static int nb_lines = 1;
-    int len = 0;
-
-    nb_lines++;
-    new_buffer = malloc(sizeof(char *) * nb_lines);
-    if (!new_buffer)
-        return (NULL);
-    if (buffer) {
-        for (; buffer[len]; len++)
-            new_buffer[len] = buffer[len];
-        new_buffer[len] = my_strdup(line);
-        free(buffer);
-    } else {
-        new_buffer[0] = my_strdup(line);
-    }
-    new_buffer[nb_lines - 1] = NULL;
-    return (new_buffer);
-}
-
-//gets the whole json_file in an array of strings
-char **get_line_array(char *path)
+//gets the size of the entire file
+static size_t get_size(char *path)
 {
     FILE *fd = fopen(path, "r");
-    char **buffer = NULL;
-    char *line = NULL;
+    size_t total_size = 0;
     size_t size = 0;
+    size_t len = 0;
+    char *line = NULL;
 
-    while (getline(&line, &size, fd) != (ssize_t) -1) {
-        buffer = add_line(line, buffer);
-        if (!buffer)
-            return (NULL);
-    }
+    while ((len = getline(&line, &size, fd)) != (size_t) -1)
+        total_size += len;
     free(line);
     fclose(fd);
+    return (total_size);
+}
+
+//gets the whole file content
+char *get_buffer(char *path)
+{
+    char *buffer = NULL;
+    size_t size = 0;
+    int fd = 0;
+
+    if (!path)
+        return (NULL);
+    fd = open(path, O_RDONLY);
+    if (fd < 0) {
+        write(2, "Error: can't find file\n", 24);
+        return (NULL);
+    }
+    size = get_size(path) + 1;
+    buffer = malloc(sizeof(char) * size);
+    if (!buffer)
+        return (NULL);
+    read(fd, buffer, size);
+    buffer[size - 1] = '\0';
+    close(fd);
     return (buffer);
 }

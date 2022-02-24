@@ -18,6 +18,7 @@ list_t *create_empty_list(void)
         return (NULL);
     new_list->nb_elements = 0;
     new_list->name = NULL;
+    new_list->head = NULL;
 
     return (new_list);
 }
@@ -28,7 +29,7 @@ void delete_list(list_t *list)
     node_t *current = list->head->prev;
     node_t *tmp = NULL;
 
-    while(current != list->head) {
+    while (current != list->head) {
         tmp = current->prev;
         delete_node(current);
         current = tmp;

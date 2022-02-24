@@ -9,9 +9,9 @@
 
 void check_type(const char *line, node_t *tmp)
 {
-    int (*checkers[5])(const char *) = {&check_double, &check_int, &check_string,
-        &check_object};
-    
+    int (*checkers[5])(const char *) = {&check_array, &check_object,
+        &check_double, &check_int, &check_string};
+
     for (int i = 0; i < 5; i++) {
         if (checkers[i](line) > 0) {
             tmp->type = i;

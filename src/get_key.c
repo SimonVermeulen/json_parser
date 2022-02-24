@@ -11,40 +11,42 @@
 #include "linked_list.h"
 #include "my.h"
 
-//gets the key
-char *get_key(const char *start)
+static int get_len(const char *buffer)
 {
-    char *key = NULL;
-    int len = 1;
+    int len = 0;
 
-    for (; start[len] && start[len] != '"'; len++);
-    key = malloc(sizeof(char) * (len));
-    if (!key)
-        return (NULL);
-    for (int i = 1; start[i] && start[i] != '"'; i++)
-        key[i - 1] = start[i];
-    key[len - 1] = '\0';
-    return (key);
+    for (; buffer[len] && buffer[len] != '"'; len++);
+    return (len);
 }
 
-//gets and sets the key of a given line
-int set_key(const char *line, node_t *new_node, int line_index)
+static int fill_key(const char *buffer, node_t *tmp, int len, int index)
 {
-    int return_value = 0;
-    int ind = 0;
-
-    for (; line[ind] && (line[ind] == ' ' || line[ind] == '\t'); ind++);
-    if (line[ind] == '"') {
-        new_node->key = get_key(&line[ind]);
-        return_value = ind + my_strlen(new_node->key) + 4;
-    } else {
-        return_value = -1;
-        new_node->key = NULL;
-    }
-    if (!new_node->key) {
-        my_printf(2, "Error at line: %d\n", line_index + 1);
-    }
-    return (return_value);
+    tmp->key = malloc(sizeof(char) * (len + 1));
+    if (!tmp->key)
+        return (-1);
+    for (int i = 0; buffer[index] && buffer[index] != '"'; index++, i++)
+        tmp->key[i] = buffer[index];
+    tmp->key[len] = '\0';
+    return (index + 1);
 }
 
-//CHANGER POUR FAIRE L'ATTRIBUTION DIRECTEMENT AU MOMENT DU GET_KEY
+int get_key(const char *buffer, int index, node_t *tmp)
+{
+    int len = 0;
+
+    if (buffer[index] && buffer[index] != '"') {
+        write(2, "Error: Invalid key\n", 20);
+        return (-1);
+    }
+    index++;
+    len = get_len(&buffer[index]);
+    index = fill_key(buffer, tmp, len, index);
+    if (index < 0)
+        return (-1);
+    if (buffer[index] && buffer[index] != ':') {
+        write(2, "Error: expected a ':'\n", 23);
+        return (-1);
+    }
+    index++;
+    return (index);
+}

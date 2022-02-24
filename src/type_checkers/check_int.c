@@ -11,12 +11,13 @@ int check_int(const char *line)
 {
     int i = 0;
     int len = 0;
+    int stop = 0;
 
     if (line[0] && line[0] == '-')
         i++;
-    for (; line[i] && (line[i] != ',' && line[i] != '\n'); i++) {
+    for (; line[i] && (line[i] != ',' && line[i] != '\n') && !stop; i++) {
         if (!is_number(line[i]))
-            return (-1);
+            stop = 1;
         else
             len++;
     }

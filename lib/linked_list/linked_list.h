@@ -14,6 +14,7 @@ typedef struct node_s {
     struct node_s *prev;
     struct node_s *next;
     int type;
+    int len;
     char *key;
     void *value;
     int id;
@@ -41,7 +42,7 @@ int pop_element(list_t *list);
 
 int shift_element(list_t *list);
 
-node_t *create_node(char *key, void *value, int id);
+node_t *create_newnode(int id);
 
 void delete_node(node_t *node);
 

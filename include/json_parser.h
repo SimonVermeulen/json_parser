@@ -10,30 +10,42 @@
 #ifndef JSON_PARSER_H_
     #define JSON_PARSER_H_
 
-    char **get_line_array(char *path);
+    #define is_number(c) (c >= '0' && c <= '9') ? 1 : 0
 
-    list_t *get_data(char **buffer);
+    char *get_buffer(char *path);
 
-    /*----------SETTERS---------*/
+    int stringify(char **buffer);
 
-    int set_key(const char *line, node_t *new_node, int line_index);
+    list_t *get_data(char *buffer);
 
-    int set_value(const char *line, node_t *new_node, int line_index);
+    /*----------TYPE_CHECKERS-----------*/
 
-    /*-------------UTILS---------*/
+    void check_type(const char *line, node_t *tmp);
 
-    int is_emptyline(char *line);
-    
-    int is_invalidchar(char c);
+    int check_array(const char *line);
+
+    int check_object(const char *line);
+
+    int check_double(const char *line);
+
+    int check_int(const char *line);
+
+    int check_string(const char *line);
 
     /*----------VALUE_GETTERS-----------*/
 
-    void get_float(const char *line, node_t *new_node);
+    int get_value(const char *buffer, int index, node_t *tmp);
 
-    void get_int(const char *line, node_t *new_node);
+    int get_key(const char *buffer, int index, node_t *tmp);
 
-    void get_singlechar(const char *line, node_t *new_node);
+    int get_array(const char *line, node_t *new_node, int nb_elements);
 
-    void get_string(const char *line, node_t *new_node);
+    int get_object(const char *line, node_t *new_node, int nb_elements);
+
+    int get_double(const char *line, node_t *new_node, int nb_elements);
+
+    int get_int(const char *line, node_t *new_node, int nb_elements);
+
+    int get_string(const char *line, node_t *new_node, int nb_elements);
 
 #endif

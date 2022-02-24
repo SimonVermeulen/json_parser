@@ -45,7 +45,7 @@ static char *set_word(char const *str, char const *delim, int in)
         for (int i = in; str[i] && !is_delim(str[i], delim); i++, windex++)
             word[windex] = str[i];
     word[windex] = '\0';
-    return(word);
+    return (word);
 }
 
 char **my_str_to_word_array(char const *str, char const *delim)
