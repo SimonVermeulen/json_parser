@@ -15,6 +15,14 @@
     #define is_printable(c) (c > 32 && c < 127) ? 1 : 0
 
 /**
+ * @brief launches the parsing of the file at the given path
+ * 
+ * @param path the path to the file
+ * @return list_t* the list with all data parsed
+ */
+list_t *launch_parsing(char *path);
+
+/**
  * @brief Get the content of the JSON file at path
  * 
  * @param path the path to the JSON file

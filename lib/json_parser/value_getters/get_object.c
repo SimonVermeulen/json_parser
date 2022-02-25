@@ -88,6 +88,8 @@ int get_object(const char *buff, node_t *new_node, int nb_elements)
         len = get_single_object(buff, new_node) + 1;
     } else {
         list_array = malloc(sizeof(list_t *) * (nb_elements + 1));
+        if (!list_array)
+            return (-1);
         len = get_object_array(&buff[0], new_node, nb_elements, list_array);
         new_node->value = list_array;
     }

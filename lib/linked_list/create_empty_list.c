@@ -16,7 +16,6 @@ list_t *create_empty_list(void)
     if (!new_list)
         return (NULL);
     new_list->nb_elements = 0;
-    new_list->name = NULL;
     new_list->head = NULL;
 
     return (new_list);
@@ -33,6 +32,5 @@ void free_list(list_t *list)
         current = tmp;
     }
     delete_node(list->head);
-    free(list->name);
     free(list);
 }

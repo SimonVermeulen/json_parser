@@ -23,13 +23,12 @@ all:	$(NAME)
 $(NAME): $(OBJ)
 	ar -ro $(NAME) $(OBJ)
 	cp $(NAME) ./../
-	cp linked_list.h ./../../include/
 
 clean:
 	rm -f *.o
 
 fclean:
-	rm -f $(OBJ) $(NAME) ./../../include/linked_list.h
+	rm -f $(OBJ) $(NAME)
 
 re: fclean all
 

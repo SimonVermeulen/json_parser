@@ -26,6 +26,9 @@ node_t *create_newnode(int id)
     return (new_node);
 }
 
+//à coder
+static void free_value(node_t *node);
+
 void free_node(node_t *node)
 {
     if (node) {

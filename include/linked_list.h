@@ -108,6 +108,6 @@ node_t *create_newnode(int id);
  * 
  * @param node the node to delete
  */
-void delete_node(node_t *node);
+void free_node(node_t *node);
 
 #endif

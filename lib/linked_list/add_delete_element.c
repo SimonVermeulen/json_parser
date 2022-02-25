@@ -75,7 +75,7 @@ int pop_element(list_t *list)
         tmp->next = list->head;
     }
     list->nb_elements--;
-    delete_node(list->head->prev);
+    free_node(list->head->prev);
     if (tmp)
         list->head->prev = tmp;
     return (1);
@@ -92,7 +92,7 @@ int shift_element(list_t *list)
         tmp->prev = list->head->prev;
     }
     list->nb_elements--;
-    delete_node(list->head);
+    free_node(list->head);
     if (tmp)
         list->head = tmp;
     return (1);
