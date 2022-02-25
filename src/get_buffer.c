@@ -10,9 +10,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "json_parser.h"
-#include "my.h"
 
-//gets the size of the entire file
 static size_t get_size(char *path)
 {
     FILE *fd = fopen(path, "r");
@@ -28,7 +26,6 @@ static size_t get_size(char *path)
     return (total_size);
 }
 
-//gets the whole file content
 char *get_buffer(char *path)
 {
     char *buffer = NULL;

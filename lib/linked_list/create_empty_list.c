@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-//Returns a pointer to an empty list with no name
 list_t *create_empty_list(void)
 {
     list_t *new_list = NULL;
@@ -23,8 +22,7 @@ list_t *create_empty_list(void)
     return (new_list);
 }
 
-//Destroys the whole list
-void delete_list(list_t *list)
+void free_list(list_t *list)
 {
     node_t *current = list->head->prev;
     node_t *tmp = NULL;

@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-//Creates an empty node
 node_t *create_newnode(int id)
 {
     node_t *new_node = NULL;
@@ -27,8 +26,7 @@ node_t *create_newnode(int id)
     return (new_node);
 }
 
-//Frees the given node
-void delete_node(node_t *node)
+void free_node(node_t *node)
 {
     if (node) {
         free(node->key);

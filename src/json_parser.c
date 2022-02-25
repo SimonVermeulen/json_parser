@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "json_parser.h"
-#include "my.h"
 
 static void print_list(list_t *list)
 {

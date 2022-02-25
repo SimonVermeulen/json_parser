@@ -23,7 +23,6 @@ static int check_error(list_t *list, int is_delete)
     return (0);
 }
 
-//Adds an element at the end of the list
 int push_element(list_t *list, node_t *data)
 {
     node_t *tmp = NULL;
@@ -45,7 +44,6 @@ int push_element(list_t *list, node_t *data)
     return (1);
 }
 
-//Adds an element at the beggining of the list
 int unshift_element(list_t *list, node_t *data)
 {
     node_t *tmp = NULL;
@@ -66,7 +64,6 @@ int unshift_element(list_t *list, node_t *data)
     return (1);
 }
 
-//Delete the last element of the list
 int pop_element(list_t *list)
 {
     node_t *tmp = NULL;
@@ -84,7 +81,6 @@ int pop_element(list_t *list)
     return (1);
 }
 
-//Delete the first element of the list
 int shift_element(list_t *list)
 {
     node_t *tmp = NULL;

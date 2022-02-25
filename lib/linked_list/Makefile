@@ -8,6 +8,7 @@
 SRC	=	add_delete_element.c	\
 		create_empty_list.c		\
 		add_delete_node.c		\
+		search.c
 
 OBJ	=	$(SRC:.c=.o)
 

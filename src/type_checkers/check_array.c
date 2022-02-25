@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2022
 ** json_parser2.0
 ** File description:
-** checks if the current line contains an array
+** checks if the current buff contains an array
 */
 
-int check_array(const char *line)
+int check_array(const char *buff)
 {
-    if (line[0] && line[0] == '[')
+    if (buff[0] && buff[0] == '[')
         return (1);
     return (0);
 }

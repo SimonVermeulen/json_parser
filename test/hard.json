@@ -9,13 +9,16 @@
         "fireDmg": 2.0,
         "range": 10,
         "desc": "a small fire tower"
-    d,
+    },
     {
         "lvlId": 1,
         "dmg": 7,
         "fireDmg": 3.5,
         "range": 12,
-        "desc": "a medium fire tower"
+        "desc": "a medium fire tower",
+        "test": {
+            "hello": "hi"
+        }
     },
     {
         "lvlId": 2,
@@ -28,5 +31,7 @@
         "test": "rigolo",
         "int": 1,
         "float": 2.2
-    }
+    },
+    "test": ["bonjour", "bonjour2", "bonjour3"]
 }
+

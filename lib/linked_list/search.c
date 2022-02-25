@@ -48,6 +48,6 @@ node_t *search_from_id(list_t *list, int id)
             return (current);
         current = current->next;
     }
-    write(2, "Error: can't find node with this id\n", 37)
+    write(2, "Error: can't find node with this id\n", 37);
     return (NULL);
 }

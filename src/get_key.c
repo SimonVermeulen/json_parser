@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include "json_parser.h"
 #include "linked_list.h"
-#include "my.h"
 
 static int get_len(const char *buffer)
 {

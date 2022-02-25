@@ -9,9 +9,7 @@
 #include <unistd.h>
 #include "json_parser.h"
 #include "linked_list.h"
-#include "my.h"
 
-//gets the whole data from a json file in a linked_list
 list_t *get_data(char *buffer)
 {
     list_t *list = NULL;
